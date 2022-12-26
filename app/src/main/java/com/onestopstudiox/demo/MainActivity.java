@@ -1,8 +1,10 @@
 package com.onestopstudiox.demo;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +14,7 @@ import com.onestopstudiox.ads.sdk.format.InterstitialAd;
 import com.onestopstudiox.ads.sdk.format.NativeAd;
 import com.onestopstudiox.ads.sdk.format.RewardedAd;
 
+@RequiresApi(api = Build.VERSION_CODES.S_V2)
 public class MainActivity extends AppCompatActivity {
 
     public static final String AD_STATUS = "1";
@@ -24,26 +27,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String ADMOB_REWARDED_ID = "ca-app-pub-3940256099942544/5224354917";
     public static final String ADMOB_APP_OPEN_AD_ID = "ca-app-pub-3940256099942544/3419835294";
 
-    public static final String STARTAPP_APP_ID = "0";
-
-    public static final String UNITY_GAME_ID = "4856585";
-    public static final String UNITY_BANNER_ID = "Banner_Android";
-    public static final String UNITY_INTERSTITIAL_ID = "Interstitial_Android";
-    public static final String UNITY_REWARDED_ID = "Rewarded_Android";
-
-    public static final String APPLOVIN_BANNER_ID = "da17eff31ae69f15";
-    public static final String APPLOVIN_INTERSTITIAL_ID = "98f6a586ed642919";
-    public static final String APPLOVIN_NATIVE_ID = "f3f42da984bf7464";
-
-    public static final String MOPUB_BANNER_ID = "b195f8dd8ded45fe847ad89ed1d016da";
-    public static final String MOPUB_INTERSTITIAL_ID = "24534e1901884e398f1253216226017e";
-
     Toolbar toolbar;
     AdNetwork.Initialize adNetwork;
     BannerAd.Builder bannerAd;
     InterstitialAd.Builder interstitialAd;
     RewardedAd.Builder rewardedAd;
     NativeAd.Builder nativeAd;
+
 
 
     @Override
@@ -58,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAdStatus(AD_STATUS)
                 .setAdNetwork(AD_NETWORK)
                 .setBackupAdNetwork(BACKUP_AD_NETWORK)
-                .setStartappAppId(STARTAPP_APP_ID)
-                .setUnityGameId(UNITY_GAME_ID)
-                .setAppLovinSdkKey(getResources().getString(R.string.applovin_sdk_key))
-                .setMopubBannerId(MOPUB_BANNER_ID)
                 .setDebug(false)
                 .build();
 
@@ -70,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAdNetwork(AD_NETWORK)
                 .setBackupAdNetwork(BACKUP_AD_NETWORK)
                 .setAdMobBannerId(ADMOB_BANNER_ID)
-                .setUnityBannerId(UNITY_BANNER_ID)
-                .setAppLovinBannerId(APPLOVIN_BANNER_ID)
-                .setDarkTheme(false)
                 .build();
 
         interstitialAd = new InterstitialAd.Builder(this)
@@ -80,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAdNetwork(AD_NETWORK)
                 .setBackupAdNetwork(BACKUP_AD_NETWORK)
                 .setAdMobInterstitialId(ADMOB_INTERSTITIAL_ID)
-                .setUnityInterstitialId(UNITY_INTERSTITIAL_ID)
-                .setAppLovinInterstitialId(APPLOVIN_INTERSTITIAL_ID)
-                .setMopubInterstitialId(MOPUB_INTERSTITIAL_ID)
                 .setInterval(0)
                 .build();
 
@@ -90,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAdStatus(AD_STATUS)
                 .setAdNetwork(AD_NETWORK)
                 .setBackupAdNetwork(BACKUP_AD_NETWORK)
-                .setAdMobRewardedId(ADMOB_REWARDED_ID)
-                .setUnityRewardedId(UNITY_REWARDED_ID)
                 .setInterval(0)
                 .build();
 
